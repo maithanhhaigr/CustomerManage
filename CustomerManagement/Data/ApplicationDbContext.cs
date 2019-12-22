@@ -18,6 +18,7 @@ namespace CustomerManagement.Data
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<Resident> Residents { get; set; }
 
+        public DbSet<Product> Products { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
