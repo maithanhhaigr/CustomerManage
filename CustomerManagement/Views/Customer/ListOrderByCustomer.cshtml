@@ -1,0 +1,69 @@
+﻿@model CustomerManagement.Models.Customer
+
+@{
+    ViewData["Title"] = "ListOrderByCustomer";
+}
+
+<div>
+    <h1>TeaOrders by customer - @Html.DisplayFor(modelItem => modelItem.Name)</h1> 
+
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2 form-group">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10 form-group">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2 form-group">
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+        <dd class="col-sm-10 form-group">
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+    </dl>
+    @*<p>
+            <a asp-action="Create">Create New</a>
+        </p>*@
+    <h5>Orders</h5>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    OrderName
+                </th>
+                <th>
+                    CustomerName
+                </th>
+                <th>
+                    TotalPrice
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Orders)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Customer.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalPrice)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="View" asp-route-id="@item.Id">Details</a> |
+                        <a @*asp-action="Delete" asp-route-id="@item.Id"*@ href="#myModal" data-toggle="modal" id="deleteButton" data-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+
