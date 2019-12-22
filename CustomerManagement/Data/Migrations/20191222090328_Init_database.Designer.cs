@@ -4,14 +4,16 @@ using CustomerManagement.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CustomerManagement.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191222090328_Init_database")]
+    partial class Init_database
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -291,24 +293,24 @@ namespace CustomerManagement.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("9fb9201d-75ef-4e86-a316-df3f83d2145c"),
-                            CreatedDate = new DateTime(2019, 12, 22, 9, 10, 44, 917, DateTimeKind.Utc).AddTicks(8617),
+                            Id = new Guid("c85eaea9-2df0-4a68-bb31-5ec791db22d4"),
+                            CreatedDate = new DateTime(2019, 12, 22, 9, 3, 28, 289, DateTimeKind.Utc).AddTicks(9857),
                             Name = "StrawberryTea",
                             Price = 50000.0,
                             Quantity = 150
                         },
                         new
                         {
-                            Id = new Guid("3bb41d48-b991-4779-ab57-4204dd3563ba"),
-                            CreatedDate = new DateTime(2019, 12, 22, 9, 10, 44, 918, DateTimeKind.Utc).AddTicks(8910),
+                            Id = new Guid("caa47031-355b-4ef8-9932-0daf58d17e97"),
+                            CreatedDate = new DateTime(2019, 12, 22, 9, 3, 28, 291, DateTimeKind.Utc).AddTicks(158),
                             Name = "PeachTea",
                             Price = 45000.0,
                             Quantity = 100
                         },
                         new
                         {
-                            Id = new Guid("7ce38e30-43cf-4dcd-ab46-1a652611c207"),
-                            CreatedDate = new DateTime(2019, 12, 22, 9, 10, 44, 918, DateTimeKind.Utc).AddTicks(9039),
+                            Id = new Guid("ac1d0d13-7b6e-406c-af13-5030d6fc7e72"),
+                            CreatedDate = new DateTime(2019, 12, 22, 9, 3, 28, 291, DateTimeKind.Utc).AddTicks(274),
                             Name = "LycheeTea",
                             Price = 55000.0,
                             Quantity = 75

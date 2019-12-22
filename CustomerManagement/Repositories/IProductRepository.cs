@@ -6,8 +6,12 @@ using CustomerManagement.Models;
 
 namespace CustomerManagement.Repositories
 {
-    public interface IProductService
+    public interface IProductRepository
     {
         void AddProduct(Product product);
+
+        List<Product> GetAllProduct();
+
+        Product GetProduct(Guid id);
     }
 }

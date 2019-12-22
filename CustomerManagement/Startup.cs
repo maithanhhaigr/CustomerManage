@@ -57,6 +57,8 @@ namespace CustomerManagement
             services.AddTransient<ITeaOrderRepository, TeaOrderRepository>();
             services.AddTransient<ICarParkingRepository, CarParkingRepository>();
             services.AddTransient<ICarParkingService, CarParkingService>();
+            services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IProductRepository, ProductRepository>();
 
         }
 
@@ -86,7 +88,7 @@ namespace CustomerManagement
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Product}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }
