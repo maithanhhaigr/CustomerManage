@@ -16,5 +16,7 @@ namespace CustomerManagement.Services
         double CalcularTotalPrices(Product product);
 
         ProductViewModel GetProduct(Guid id);
+
+        List<ProductViewModel> GetProducts(int numberOfQuantity);
     }
 }

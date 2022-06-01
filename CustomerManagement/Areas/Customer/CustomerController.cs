@@ -4,15 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CustomerManagement.Controllers
+namespace CustomerManagement.Areas.Customer
 {
-    public class CarController : Controller
+    [Area("Customer")]
+    [Route("Customers/{controller=Home}/{action=Index}/{id?}")]
+    public class CustomerController : Controller
     {
         public IActionResult Index()
         {
             return View();
-
         }
     }
-
 }

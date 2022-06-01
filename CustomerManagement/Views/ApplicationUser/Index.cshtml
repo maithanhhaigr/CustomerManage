@@ -53,21 +53,21 @@
         <tbody>
             @foreach (var item in Model)
             {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.RoleName)
-                </td>
-                <td>
-                    <a asp-action="CreateOrEdit" asp-route-id="@item.Id" data-toggle="modal" data-target="#modal-container">Edit</a> |
-                    <a asp-action="DeleteRole" asp-route-id="@item.Id" data-target="#modal-container" data-toggle="modal">Delete</a>
-                </td>
-            </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoleName)
+                    </td>
+                    <td>
+                        <a asp-action="CreateOrEdit" asp-route-id="@item.Id" data-toggle="modal" data-target="#modal-container">Edit</a> |
+                        <a asp-action="DeleteRole" asp-route-id="@item.Id" data-toggle="modal" data-target="#modal-container">Delete</a>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>

@@ -19,6 +19,10 @@ namespace CustomerManagement.Data
         public DbSet<Resident> Residents { get; set; }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<ProductOrder> ProductOrders { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -29,9 +33,33 @@ namespace CustomerManagement.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<Product>()
+                .HasOne(x => x.Category)
+                .WithMany(x => x.Products)
+                .HasForeignKey(x => x.CategoryId);
+
+            modelBuilder.Entity<Category>().HasData(new Category { Id = Guid.NewGuid(), Name = "Oto" });
+            modelBuilder.Entity<Category>().HasData(new Category { Id = Guid.NewGuid(), Name = "Moto" });
+            modelBuilder.Entity<Category>().HasData(new Category { Id = Guid.NewGuid(), Name = "Xemay" });
+
+
+            modelBuilder.Entity<ProductOrder>()
+                .HasOne(x => x.Product)
+                .WithMany(x => x.ProductOrders)
+                .HasForeignKey(x => x.ProductId);
+            modelBuilder.Entity<ProductOrder>()
+                .HasOne(x => x.Order)
+                .WithMany(x => x.ProductOrders)
+                .HasForeignKey(x => x.OrderId);
+            modelBuilder.Entity<ProductOrder>().HasKey(to => new { to.ProductId, to.OrderId });
+
+
+
+
             modelBuilder.Entity<Tea>().HasData(new Tea { Id = Guid.NewGuid(), Name = "StrawberryTea", Price = 50000, Quantity = 150 });
             modelBuilder.Entity<Tea>().HasData(new Tea { Id = Guid.NewGuid(), Name = "PeachTea", Price = 45000, Quantity = 100 });
             modelBuilder.Entity<Tea>().HasData(new Tea { Id = Guid.NewGuid(), Name = "LycheeTea", Price = 55000, Quantity = 75 });
+            modelBuilder.Entity<Tea>().HasData(new Tea { Id = Guid.NewGuid(), Name = "Test", Price = 55000, Quantity = 75 });
 
             modelBuilder.Entity<TeaOrder>()
                 .HasOne(c => c.Customer)

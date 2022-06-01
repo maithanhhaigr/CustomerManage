@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CustomerManagement.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -17,5 +19,12 @@ namespace CustomerManagement.ViewModels
 
         [Display(Name = "Total")]
         public double TotalPrice { get; set; }
+
+        public Guid CategoryId { get; set; }
+        public string CategoryName { get; set; }
+        [Display(Name="Category Name")]
+        public Category Category { get; set; }
+
+        public List<SelectListItem> CategorySelection { get; set; }
     }
 }

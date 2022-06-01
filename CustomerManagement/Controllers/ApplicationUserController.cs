@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CustomerManagement.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ApplicationUserController : Controller
     {
         private readonly UserManager<ApplicationUser> userManager;
@@ -92,7 +92,6 @@ namespace CustomerManagement.Controllers
                 return PartialView("_CreateOrEdit", model);
             }
 
-
             if (String.IsNullOrEmpty(id))
             {
                 ApplicationUser user = new ApplicationUser
@@ -102,7 +101,7 @@ namespace CustomerManagement.Controllers
                     Email = model.Email,
                     UserName = model.Email
                 };
-                
+
                 IdentityResult result = await userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

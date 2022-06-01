@@ -14,6 +14,15 @@ namespace CustomerManagement.MapperProfile
         {
             CreateMap<TeaOrder, TeaOrderViewModel>();
             CreateMap<TeaOrderViewModel, TeaOrder>();
+
+            CreateMap<Order, OrderViewModel>();
+            CreateMap<OrderViewModel, Order>();
+
+            CreateMap<Product, ProductViewModel>();
+            CreateMap<ProductViewModel, Product>();
+
+            //CreateMap<Product, ProductViewModel>()
+            //    .ForMember(dist => dist.Name, origin => origin.ProductViewName);
         }
     }
 }

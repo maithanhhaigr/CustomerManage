@@ -10,10 +10,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CustomerManagement.Controllers
 {
-    [Authorize(Roles = "InternalUser")]
+    [Authorize]
+    //[Authorize(Roles = "khachhang")]
     public class CustomerController : Controller
     {
         private readonly ICustomerService _service;
+
         public CustomerController(ICustomerService service)
         {
             _service = service;
@@ -41,7 +43,7 @@ namespace CustomerManagement.Controllers
             return Redirect("Index");
         }
 
-        [Authorize(Roles = "InternalUser")]
+        [Authorize(Roles = "khachhang")]
         public IActionResult View(string id)
         {
             Customer customer = _service.GetCustomerById(id);

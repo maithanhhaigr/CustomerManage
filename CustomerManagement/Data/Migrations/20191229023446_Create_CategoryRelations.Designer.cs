@@ -4,14 +4,16 @@ using CustomerManagement.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CustomerManagement.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191229023446_Create_CategoryRelations")]
+    partial class Create_CategoryRelations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -176,8 +178,7 @@ namespace CustomerManagement.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -188,26 +189,6 @@ namespace CustomerManagement.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("66100038-8eb2-48ab-b25c-7e27fac8d197"),
-                            CreatedDate = new DateTime(2019, 12, 29, 8, 30, 8, 884, DateTimeKind.Utc).AddTicks(1573),
-                            Name = "Oto"
-                        },
-                        new
-                        {
-                            Id = new Guid("2e24acdf-bf79-4a68-9287-30d8ad221dee"),
-                            CreatedDate = new DateTime(2019, 12, 29, 8, 30, 8, 885, DateTimeKind.Utc).AddTicks(1437),
-                            Name = "Moto"
-                        },
-                        new
-                        {
-                            Id = new Guid("840caa3a-0cd0-4f5d-8224-39780b2e000b"),
-                            CreatedDate = new DateTime(2019, 12, 29, 8, 30, 8, 885, DateTimeKind.Utc).AddTicks(1546),
-                            Name = "Xemay"
-                        });
                 });
 
             modelBuilder.Entity("CustomerManagement.Models.Customer", b =>
@@ -241,35 +222,6 @@ namespace CustomerManagement.Data.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("CustomerManagement.Models.Order", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("NumberOfOrder")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("PurchaseDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("UpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Orders");
-                });
-
             modelBuilder.Entity("CustomerManagement.Models.Product", b =>
                 {
                     b.Property<Guid>("Id")
@@ -286,8 +238,7 @@ namespace CustomerManagement.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
@@ -306,21 +257,6 @@ namespace CustomerManagement.Data.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("CustomerManagement.Models.ProductOrder", b =>
-                {
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("OrderId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("ProductId", "OrderId");
-
-                    b.HasIndex("OrderId");
-
-                    b.ToTable("ProductOrders");
                 });
 
             modelBuilder.Entity("CustomerManagement.Models.Resident", b =>
@@ -388,33 +324,25 @@ namespace CustomerManagement.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("02475aef-8883-4c9b-b1a8-ada4078e7548"),
-                            CreatedDate = new DateTime(2019, 12, 29, 8, 30, 8, 885, DateTimeKind.Utc).AddTicks(8420),
+                            Id = new Guid("5b768fea-99bc-480e-8a85-f3eb2e84a2a0"),
+                            CreatedDate = new DateTime(2019, 12, 29, 2, 34, 46, 399, DateTimeKind.Utc).AddTicks(1220),
                             Name = "StrawberryTea",
                             Price = 50000.0,
                             Quantity = 150
                         },
                         new
                         {
-                            Id = new Guid("b23ed790-b0d7-4d6d-bac3-5673428ce942"),
-                            CreatedDate = new DateTime(2019, 12, 29, 8, 30, 8, 885, DateTimeKind.Utc).AddTicks(9740),
+                            Id = new Guid("12d96467-6e0c-4447-bc89-c563b15e74da"),
+                            CreatedDate = new DateTime(2019, 12, 29, 2, 34, 46, 400, DateTimeKind.Utc).AddTicks(5107),
                             Name = "PeachTea",
                             Price = 45000.0,
                             Quantity = 100
                         },
                         new
                         {
-                            Id = new Guid("6fafdf30-988f-4dd0-81ff-2bf5a822b648"),
-                            CreatedDate = new DateTime(2019, 12, 29, 8, 30, 8, 885, DateTimeKind.Utc).AddTicks(9791),
+                            Id = new Guid("bbfeabde-af01-43da-bd12-2f0a9465570e"),
+                            CreatedDate = new DateTime(2019, 12, 29, 2, 34, 46, 400, DateTimeKind.Utc).AddTicks(5265),
                             Name = "LycheeTea",
-                            Price = 55000.0,
-                            Quantity = 75
-                        },
-                        new
-                        {
-                            Id = new Guid("b8548967-877e-40e5-b980-e0b3f570646e"),
-                            CreatedDate = new DateTime(2019, 12, 29, 8, 30, 8, 885, DateTimeKind.Utc).AddTicks(9807),
-                            Name = "Test",
                             Price = 55000.0,
                             Quantity = 75
                         });
@@ -632,21 +560,6 @@ namespace CustomerManagement.Data.Migrations
                     b.HasOne("CustomerManagement.Models.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("CustomerManagement.Models.ProductOrder", b =>
-                {
-                    b.HasOne("CustomerManagement.Models.Order", "Order")
-                        .WithMany("ProductOrders")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CustomerManagement.Models.Product", "Product")
-                        .WithMany("ProductOrders")
-                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -27,5 +27,12 @@
         <input asp-for="Quantity" class="form-control">
         @*<span asp-validation-for="Name" class="text-danger"></span>*@
     </div>
+    <div class="form-group">
+        <label>Category :</label>
+        <select asp-for="CategoryId"
+                asp-items="Model.CategorySelection" class="form-control">
+            <option>Please select one customer</option>
+        </select>
+    </div>
     <button type="submit" class="btn btn-primary">Create</button>
 </form>
