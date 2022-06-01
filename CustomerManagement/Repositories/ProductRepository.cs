@@ -1,5 +1,6 @@
 ﻿using CustomerManagement.Data;
 using CustomerManagement.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,6 @@ namespace CustomerManagement.Repositories
         public void AddProduct(Product product)
         {
             //products.Add(product);
-
             using (var transaction = _context.Database.BeginTransaction())
             {
                 try
@@ -49,7 +49,22 @@ namespace CustomerManagement.Repositories
         public Product GetProduct(Guid id)
         {
             //return products.FirstOrDefault(a => a.Id == id);
-            return _context.Products.FirstOrDefault(a => a.Id == id);
+            //return _context.Products.FirstOrDefault(a => a.Id == id);
+            return _context.Products.Include(x => x.Category).FirstOrDefault(a => a.Id == id);
+        }
+
+
+
+        public List<Product> GetProducts(int numberOfQuantity)
+        {
+            try
+            {
+                return _context.Products.Where(x => x.Quantity >= numberOfQuantity).ToList();
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
         }
     }
 }

@@ -13,5 +13,7 @@ namespace CustomerManagement.Repositories
         List<Product> GetAllProduct();
 
         Product GetProduct(Guid id);
+
+        List<Product> GetProducts(int numberOfQuantity);
     }
 }

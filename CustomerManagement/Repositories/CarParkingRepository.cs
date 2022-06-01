@@ -7,5 +7,6 @@ namespace CustomerManagement.Repositories
 {
     public class CarParkingRepository : ICarParkingRepository
     {
+        //
     }
 }
